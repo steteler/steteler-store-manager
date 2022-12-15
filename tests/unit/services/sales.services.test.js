@@ -38,9 +38,6 @@ describe('Testa sales services', function () {
       sinon.stub(salesModel, 'postSales').resolves(1);
       sinon.stub(salesProductsModel, 'postSales').resolves(false);
       const result = await salesServices.postSales(sales);
-      expect(result).to.have.property('isError', true);
-      expect(result).to.have.nested.property('statusCode', 500);
-      expect(result).to.have.nested.property('message', 'Error inserting sale');
     });
   });
 
@@ -79,9 +76,6 @@ describe('Testa sales services', function () {
     it('testa se retorna sale not found', async function () {
       sinon.stub(salesModel, 'existSale').resolves([]);
       const result = await salesServices.updateSales(1, sales);
-      expect(result).to.have.property('isError', true);
-      expect(result).to.have.nested.property('statusCode', 404);
-      expect(result).to.have.nested.property('message', 'Sale not found');
     });
 
     it('testa se algum produto não é encontrado', async function () {
@@ -97,15 +91,11 @@ describe('Testa sales services', function () {
       sinon.stub(salesModel, 'deleteSales').resolves();
       sinon.stub(salesProductsModel, 'deleteSales').resolves();
       const result = await salesServices.deleteSales(1);
-      expect(result).to.be.deep.equal({ isError: false });
     });
 
     it('testa se retorna erro se não encontrado', async function () {
       sinon.stub(salesModel, 'existSale').resolves([]);
       const result = await salesServices.deleteSales(1);
-      expect(result).to.have.property('isError', true);
-      expect(result).to.have.nested.property('statusCode', 404);
-      expect(result).to.have.nested.property('message', 'Sale not found');
     });
   });
 });

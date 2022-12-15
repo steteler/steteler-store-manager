@@ -11,7 +11,7 @@ const bodyRequest = [
   { productId: 2, quantity: 2 },
 ];
 
-const productNotFound = undefined;
+const productNotFound = 'Product not found';
 
 const finalReturn = [
   {
@@ -28,7 +28,7 @@ const finalReturn = [
   },
 ];
 
-const saleNotFound = undefined;
+const saleNotFound = 'Sales not found';
 
 const updateReturn = {
   saleId: 1,

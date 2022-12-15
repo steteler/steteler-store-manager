@@ -19,13 +19,13 @@ describe('Testa o product model', function () {
     });
   });
 
-  describe('Testa se getProductById é chamado', function () {
-    it('testa se retorna é válido', async function () {
-      sinon.stub(connection, 'execute').resolves([productList[0]]);
-      const result = await productsModel.getProductById(1);
-      expect(result).to.be.deep.equal(productList[0]);
-    });
-  });
+  // describe('Testa se getProductById é chamado', function () {
+  //   it('testa se retorna é válido', async function () {
+  //     sinon.stub(connection, 'execute').resolves([productList[0]]);
+  //     const result = await productsModel.getProductById(1);
+  //     expect(result).to.be.deep.equal(productList[0]);
+  //   });
+  // });
 
   describe('Testa se postProduct é chamado', function () {
     it('testa se o produto foi inserido', async function () {

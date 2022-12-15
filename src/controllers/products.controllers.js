@@ -33,6 +33,7 @@ const updateProduct = async (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
   const { updated, product } = await productsServices.updateProduct(id, name);
+  console.log(updated);
   if (!updated) {
     return res.status(HTTP_NOT_FOUND).json({ message: 'Product not found' });
   }

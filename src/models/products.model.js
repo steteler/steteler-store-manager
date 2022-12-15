@@ -1,5 +1,20 @@
 const connection = require('./connection');
 
+const searchByQuery = async (query) => {
+  const [products] = await connection.execute(
+    `
+    SELECT
+      *
+    FROM
+      StoreManager.products
+    WHERE
+      name LIKE ?`,
+    [`%${query}%`],
+  );
+
+  return products;
+};
+
 const getAllProducts = async () => {
   const [products] = await connection.execute(
     'SELECT * FROM StoreManager.products ORDER BY id',
@@ -41,6 +56,7 @@ const deleteProduct = async (id) => {
 };
 
 module.exports = {
+  searchByQuery,
   getAllProducts,
   getProductById,
   postProduct,

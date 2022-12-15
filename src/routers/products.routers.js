@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const {
+  searchByQuery,
   getAllProducts,
   getProductById,
   postProduct,
@@ -15,6 +16,7 @@ const {
   validateInsertProductBody,
 } = require('../middlewares/products.middlewares');
 
+router.get('/search', searchByQuery);
 // get - pegar as informações
 router.get('/', getAllProducts);
 router.get('/:id', validateId, getProductById);

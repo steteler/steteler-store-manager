@@ -5,6 +5,13 @@ const HTTP_CREATED = 201;
 const HTTP_NO_CONTENT = 204;
 const HTTP_NOT_FOUND = 404;
 
+const searchByQuery = async (req, res) => {
+  console.log('passo');
+  const { q } = req.query;
+  const products = await productsServices.searchByQuery(q);
+  return res.status(200).json(products);
+};
+
 // pega todos os produtos
 const getAllProducts = async (_req, res) => {
   const products = await productsServices.getAllProducts();
@@ -53,6 +60,7 @@ const deleteProduct = async (req, res) => {
 };
 
 module.exports = {
+  searchByQuery,
   getAllProducts,
   getProductById,
   postProduct,

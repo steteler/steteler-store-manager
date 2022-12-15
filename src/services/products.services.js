@@ -1,5 +1,11 @@
 const productsModel = require('../models/products.model');
 
+const searchByQuery = async (query) => {
+  const products = await productsModel.searchByQuery(query);
+  console.log(products);
+  return products;
+};
+
 const getAllProducts = async () => {
   const products = await productsModel.getAllProducts();
   return products;
@@ -31,6 +37,7 @@ const deleteProduct = async (id) => {
 };
 
 module.exports = {
+  searchByQuery,
   getAllProducts,
   getProductById,
   postProduct,
